@@ -29,10 +29,6 @@ router.post('/', (req, res, next) => {
   }) 
 });
 
-router.post('celebrities/:id/delete'), (req, res, next) => {
-  
-}
-
 router.get('/:id', (req, res, next) => {
   Celebrity.findById(req.params.id)
   .then((celebrity) => {
@@ -43,6 +39,40 @@ router.get('/:id', (req, res, next) => {
   })
 });
 
+router.post('/:id/delete', (req, res, next) => {
+  const {id} = req.params;
+  Celebrity.findByIdAndRemove(id)
+  .then(() => {
+    console.log('Se ha borrado directamente')
+    res.redirect('/celebrities');
+  })
+  .catch((error) => {
+    next(error);
+  })
+});
+
+router.get('/:id/edit', (req, res, next) => {
+  Celebrity.findById(req.params.id)
+  .then((celebrity) => {
+    res.render('celebrities/edit', celebrity)
+  })
+  .catch((error) => {
+    next(error);
+  })
+});
+
+router.post('/:id/update', (req,res,next)=>{
+  const {id} = req.params;
+  const {name, occupation, catchPhrase} = req.body
+
+  Celebrity.findByIdAndUpdate(id, {name, occupation, catchPhrase})
+  .then((response)=>{
+    res.redirect('/celebrities');
+  })
+  .catch((err)=>{
+    next(err);
+  });
+});
 
 
 module.exports = router;

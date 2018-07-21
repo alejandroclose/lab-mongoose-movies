@@ -2,10 +2,14 @@
 <h2>Celebrities</h2>
 {{#each celebrities}}
 <ul>
-  <li>{{name}} <a href="/celebrities/{{_id}}">Details</a><form action="/celebrities/{{_id}}/delete" method="post">
-  <button type="submit">Delete</button>
-  </form></li>
+  <li>
+    {{name}}
+    <a href="/celebrities/{{_id}}">Details</a>
+    <form action="/celebrities/{{_id}}/delete" method="post">
+      <button type="submit">Delete</button>
+    </form>
+    <a href="/celebrities/{{_id}}/edit">Edit</a>
+  </li>
 </ul>
-<a href="/celebrities/new">Add Celebrity</a>
 {{/each}}
 
