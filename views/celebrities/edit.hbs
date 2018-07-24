@@ -2,12 +2,12 @@
 <h2>Edit celebrity</h2>
 
 <form action="/celebrities/{{_id}}/update" method="post">
-  <input type="text" name="name" placeholder="Edit name">
+  <input type="text" name="name" value="{{name }}" placeholder="Edit name">
   <br>
   <br>
-  <input type="text" name="occupation" placeholder="Edit occupation">
+  <input type="text" name="occupation" value="{{ occupation }}" placeholder="Edit occupation">
   <br>
   <br>
-  <input type="text" name="catchPhrase" placeholder="Edit catch phrase">
+  <input type="text" name="catchPhrase" value="{{ catchPhrase }}" placeholder="Edit catch phrase">
   <button type="submit">Confirm edit</button>
 </form>
